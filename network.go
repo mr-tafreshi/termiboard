@@ -4,6 +4,7 @@ import (
   "io/ioutil"
   "net/http"
   "net"
+  "strings"
 )
 
 //func GetPublicIPAddress() string {
@@ -21,7 +22,7 @@ func GetLocalIPAddress() {
         // check the address type and if it is not a loopback the display it
         if ipnet, ok := address.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
             if ipnet.IP.To4() != nil {
-		    ResultPrinter("Local IP Address: ", ipnet.IP.String())
+		    ResultPrinter("Local IP Address: ", strings.ToLower(ipnet.IP.String()))
             }
         }
     }
